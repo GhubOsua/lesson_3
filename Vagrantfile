@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vim: set ft=ruby :
-home = ENV['HOME']
+Virtual = ENV['Virtual']
 ENV["LC_ALL"] = "en_US.UTF-8"
 
 MACHINES = {
@@ -11,22 +11,22 @@ MACHINES = {
     :cpus => 3,
     :disks => {
         :sata1 => {
-            :dfile => home + '/VirtualBox VMs/sata1.vdi',
+            :dfile => Virtual+'/kat/sata1.vdi',
             :size => 10240,
             :port => 1
         },
         :sata2 => {
-            :dfile => home + '/VirtualBox VMs/sata2.vdi',
+            :dfile => Virtual+'/kat/sata2.vdi',
             :size => 2048, # Megabytes
             :port => 2
         },
         :sata3 => {
-            :dfile => home + '/VirtualBox VMs/sata3.vdi',
+            :dfile => Virtual+'/kat/sata3.vdi',
             :size => 1024, # Megabytes
             :port => 3
         },
         :sata4 => {
-            :dfile => home + '/VirtualBox VMs/sata4.vdi',
+            :dfile => Virtual+'/kat/sata4.vdi',
             :size => 1024,
             :port => 4
         }
@@ -66,7 +66,7 @@ Vagrant.configure("2") do |config|
                        end
                     end
             end
-  
+	 config.vm.synced_folder ".", "/vagrant", type: "virtualbox"	  
 #        box.vm.provision "shell", inline: <<-SHELL
 #            mkdir -p ~root/.ssh
 #            cp ~vagrant/.ssh/auth* ~root/.ssh
