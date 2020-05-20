@@ -11,22 +11,22 @@ MACHINES = {
     :cpus => 3,
     :disks => {
         :sata1 => {
-            :dfile => Virtual+'/kat/sata1.vdi',
+            :dfile => Virtual+'/lesson3/sata1.vdi',
             :size => 10240,
             :port => 1
         },
         :sata2 => {
-            :dfile => Virtual+'/kat/sata2.vdi',
+            :dfile => Virtual+'/lesson3/sata2.vdi',
             :size => 2048, # Megabytes
             :port => 2
         },
         :sata3 => {
-            :dfile => Virtual+'/kat/sata3.vdi',
+            :dfile => Virtual+'/lesson3/sata3.vdi',
             :size => 1024, # Megabytes
             :port => 3
         },
         :sata4 => {
-            :dfile => Virtual+'/kat/sata4.vdi',
+            :dfile => Virtual+'/lesson3/sata4.vdi',
             :size => 1024,
             :port => 4
         }
@@ -36,7 +36,7 @@ MACHINES = {
 
 Vagrant.configure("2") do |config|
 
-    #config.vm.box_version = "1804.02"
+    config.vm.box_version = "1804.02"
     MACHINES.each do |boxname, boxconfig|
   
         config.vm.define boxname do |box|
@@ -67,11 +67,11 @@ Vagrant.configure("2") do |config|
                     end
             end
 	 config.vm.synced_folder ".", "/vagrant", type: "virtualbox"	  
-#        box.vm.provision "shell", inline: <<-SHELL
-#            mkdir -p ~root/.ssh
-#            cp ~vagrant/.ssh/auth* ~root/.ssh
-#            yum install -y mdadm smartmontools hdparm gdisk
-#          SHELL
+        box.vm.provision "shell", inline: <<-SHELL
+            mkdir -p ~root/.ssh
+            cp ~vagrant/.ssh/auth* ~root/.ssh
+            yum install -y mdadm smartmontools hdparm gdisk
+          SHELL
   
         end
     end
