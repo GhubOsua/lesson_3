@@ -142,7 +142,8 @@ xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt
 
 4. Работа с var;
 
-	4.1. Создание для нового раздела var -  pv, vgvar, lvvar:
+* 4.1. Создание для нового раздела var -  pv, vgvar, lvvar:
+```
 pvcreate /dev/sd{c,d}
 Physical volume "/dev/sdc" successfully created.
 Physical volume "/dev/sdd" successfully created.
@@ -153,9 +154,9 @@ Volume group "vg_var" successfully created
 lvcreate -L 950M -m1 -n lv_var vg_var
 Rounding up size to full physical extent 952.00 MiB
 Logical volume "lv_var" created.
-
-	4.2. Создается ФС на lv_var, монтируется ФС в папку mnt. Копируются файлы из /var в mnt/var (рукурсивно и сохр. прав). После размонитируется /mnt, монтируется уже в lv_var в /var. Правим fstab. Перезагружаемся и удаляем pv где хранилось vg_root/lv_root, т.е. /dev/sdb. Правим fstab. Перезагружаемся и удаляем pv в котором  vg_root/lv_root, т.е. /dev/sdb.
-
+```
+* 4.2. Создается ФС на lv_var, монтируется ФС в папку mnt. Копируются файлы из /var в mnt/var (рукурсивно и сохр. прав). После размонитируется /mnt, монтируется уже в lv_var в /var. Правим fstab. Перезагружаемся и удаляем pv где хранилось vg_root/lv_root, т.е. /dev/sdb. Правим fstab. Перезагружаемся и удаляем pv в котором  vg_root/lv_root, т.е. /dev/sdb.
+```
 Вывод lsblk:
 [root@lvm ~]# lsblk
 NAME                     MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
@@ -177,11 +178,11 @@ sdd                        8:48   0    1G  0 disk
 └─vg_var-lv_var_rimage_1 253:6    0  952M  0 lvm  
   └─vg_var-lv_var        253:7    0  952M  0 lvm  /var
 sde                        8:64   0    1G  0 disk 
-
+```
 5. Работа с home;
 
-	5.1. Повторяем действия 4 пункта, только раздел /home;
-
+* 5.1. Повторяем действия 4 пункта, только раздел /home;
+```
 Вывод lsblk:
 [root@lvm ~]# lsblk
 NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
@@ -204,10 +205,12 @@ sdd                          8:48   0    1G  0 disk
 └─vg_var-lv_var_rimage_1   253:5    0  952M  0 lvm  
   └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
 sde                          8:64   0    1G
+```
 
-	5.2. Создем snapshot для /home. Удаляем файлы из фс и восстанавливаем фс до удаления файлов с помощью фс;
+* 5.2. Создем snapshot для /home. Удаляем файлы из фс и восстанавливаем фс до удаления файлов с помощью фс;
 
 Вывод lvs со снапшотом:
+```
 [root@lvm home]# lvs
   LV          VG         Attr       LSize   Pool Origin      Data%  Meta%  Move Log Cpy%Sync Convert
   LogVol00    VolGroup00 -wi-ao----   8.00g                                                         
@@ -215,8 +218,9 @@ sde                          8:64   0    1G
   LogVol_Home VolGroup00 owi-aos---   2.00g                                                         
   home_snap   VolGroup00 swi-a-s--- 128.00m      LogVol_Home 0.00                                   
   lv_var      vg_var     rwi-aor--- 952.00m                                         100.00
-
+```
 Вывод lsblk без снапшоты:
+```
 [root@lvm home]# lsblk
 NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                          8:0    0   40G  0 disk 
@@ -227,5 +231,4 @@ sda                          8:0    0   40G  0 disk
   ├─VolGroup00-LogVol01    253:1    0  1.5G  0 lvm  [SWAP]
   └─VolGroup00-LogVol_Home 253:7    0    2G  0 lvm  /home
 sdb                          8:16   0   10G  0 disk 
-
- 
+```
