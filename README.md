@@ -25,7 +25,7 @@ sde                       8:64   0    1G  0 disk
 
 3. Выполнение задание: Уменьшение тома под / до 8G;
 
-	3.1. Создание pv, vg, lv на /dev/sdb:
+3.1. Создание pv, vg, lv на /dev/sdb:
 
 Вывод команд: pvs, vgs, lvs:
 PV         VG         Fmt  Attr PSize   PFree 
