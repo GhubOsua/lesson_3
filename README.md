@@ -1,5 +1,5 @@
 # Урок 3. Задание 1.
-В репозитории находятся файлы [Vagrantfile](Vagrantfile), README и файлы логирования утилиты [time_lesson_3](time_lesson_3) [work_lesson_3](work_lesson_3).
+В репозитории находятся файлы [Vagrantfile](Vagrantfile), README и файлы логирования утилиты script [time_lesson_3](time_lesson_3) [work_lesson_3](work_lesson_3).
 
 ## Описание Vagrantfile:
 1. В файле находится параметры вирт. машини;
