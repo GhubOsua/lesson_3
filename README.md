@@ -9,8 +9,9 @@
 1. Загрузка вирт. машины и обновление  ОС. virtual up , yum update -y;
 2. Смотрим какие устройства у нас;
 
-* [vagrant@lvm /]$ lsblk
-* NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+[vagrant@lvm /]$ lsblk
+
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 
 sda                       8:0    0   40G  0 disk
 
@@ -39,7 +40,7 @@ sde                       8:64   0    1G  0 disk
 
 3. Выполнение задание: Уменьшение тома под / до 8G;
 
-    3.1  Создание pv, vg, lv на /dev/sdb;
+3.1  Создание pv, vg, lv на /dev/sdb;
   
 Вывод команд: pvs, vgs, lvs:
 
@@ -49,13 +50,12 @@ PV         VG         Fmt  Attr PSize   PFree
 
 /dev/sdb              lvm2 ---   10.00g 10.00g
 
-VG         #PV #LV #SN Attr   VSize   VFree  
+VG         #PV #LV #SN Attr   VSize   VFree 
 
   VolGroup00   1   2   0 wz--n- <38.97g      0 
   
   vg_root      1   0   0 wz--n- <10.00g <10.00g
   
-
 LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
 
   LogVol00 VolGroup00 -wi-ao---- <37.47g 
