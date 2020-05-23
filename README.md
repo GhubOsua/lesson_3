@@ -25,12 +25,12 @@ sde                       8:64   0    1G  0 disk
 
 3. Выполнение задание: Уменьшение тома под / до 8G;
 
-3.1. Создание pv, vg, lv на /dev/sdb:
+3.1. Создание pv, vg, lv на /dev/sdb;
 
 Вывод команд: pvs, vgs, lvs:
-PV         VG         Fmt  Attr PSize   PFree 
-  /dev/sda3  VolGroup00 lvm2 a--  <38.97g     0 
-  /dev/sdb              lvm2 ---   10.00g 10.00g
+PV         VG         Fmt  Attr PSize   PFree
+/dev/sda3  VolGroup00 lvm2 a--  <38.97g     0 
+/dev/sdb              lvm2 ---   10.00g 10.00g
 
 VG         #PV #LV #SN Attr   VSize   VFree  
   VolGroup00   1   2   0 wz--n- <38.97g      0 
@@ -41,7 +41,7 @@ LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sy
   LogVol01 VolGroup00 -wi-ao----   1.50g                                                    
   lv_root  vg_root    -wi-a----- <10.00g   
 	
-	3.2. Создание фс, монтирование и перенос данных;
+3.2. Создание фс, монтирование и перенос данных;
 
 ФС:
 meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
