@@ -9,7 +9,7 @@
 1. Загрузка вирт. машины и обновление  ОС. virtual up , yum update -y;
 2. Смотрим какие устройства у нас;
 
-```
+```bash
 NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                          8:0    0   40G  0 disk 
 ├─sda1                       8:1    0    1M  0 part 
@@ -31,7 +31,7 @@ sdd                          8:48   0    1G  0 disk
   └─vg_var-lv_var          253:7    0  952M  0 lvm  /var
 sde                          8:64   0    1G  0 disk 
 
-```
+```bash
 
 
 
