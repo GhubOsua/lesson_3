@@ -28,26 +28,20 @@ sde                       8:64   0    1G  0 disk
   
 Вывод команд: pvs, vgs, lvs:
 
-PV         VG         Fmt  Attr PSize   PFree
-
+```PV         VG         Fmt  Attr PSize   PFree
 /dev/sda3  VolGroup00 lvm2 a--  <38.97g     0 
-
 /dev/sdb              lvm2 ---   10.00g 10.00g
 
 VG         #PV #LV #SN Attr   VSize   VFree 
-
-  VolGroup00   1   2   0 wz--n- <38.97g      0 
-  
-  vg_root      1   0   0 wz--n- <10.00g <10.00g
+VolGroup00   1   2   0 wz--n- <38.97g      0 
+vg_root      1   0   0 wz--n- <10.00g <10.00g
   
 LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
-
-  LogVol00 VolGroup00 -wi-ao---- <37.47g 
-  
-  LogVol01 VolGroup00 -wi-ao----   1.50g 
-  
+LogVol00 VolGroup00 -wi-ao---- <37.47g 
+LogVol01 VolGroup00 -wi-ao----   1.50g 
   lv_root  vg_root    -wi-a----- <10.00g   
-	
+```
+
 * 3.2. Создание фс, монтирование и перенос данных;
 
 ФС:
