@@ -38,9 +38,9 @@ sdd                       8:48   0    1G  0 disk
 sde                       8:64   0    1G  0 disk
 
 
-3. Выполнение задание: Уменьшение тома под / до 8G;
-
-3.1  Создание pv, vg, lv на /dev/sdb;
+  3. Выполнение задание: Уменьшение тома под / до 8G;
+  
+* 3.1.  Создание pv, vg, lv на /dev/sdb;
   
 Вывод команд: pvs, vgs, lvs:
 
@@ -64,17 +64,25 @@ LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sy
   
   lv_root  vg_root    -wi-a----- <10.00g   
 	
-3.2. Создание фс, монтирование и перенос данных;
+* 3.2. Создание фс, монтирование и перенос данных;
 
 ФС:
 meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
+
          =                       sectsz=512   attr=2, projid32bit=1
+	 
          =                       crc=1        finobt=0, sparse=0
+	 
 data     =                       bsize=4096   blocks=2620416, imaxpct=25
+
          =                       sunit=0      swidth=0 blks
+	 
 naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+
 log      =internal log           bsize=4096   blocks=2560, version=2
+
          =                       sectsz=512   sunit=0 blks, lazy-count=1
+	 
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 
 
@@ -91,7 +99,7 @@ total 12
     7782 drwxr-xr-x.  2 root root    6 May 12  2018 boot
 и так далее
 
-	3.3. Переконфигурация GRUB и обновление образа initrd. ;
+3.3. Переконфигурация GRUB и обновление образа initrd. ;
 
 Generating grub configuration file ...
 Found linux image: /boot/vmlinuz-3.10.0-1127.8.2.el7.x86_64
