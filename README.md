@@ -81,7 +81,7 @@ total 12
 и так далее
 ```
 
-3.3. Переконфигурация GRUB и обновление образа initrd. ;
+* 3.3. Переконфигурация GRUB и обновление образа initrd. ;
 ```
 Generating grub configuration file ...
 Found linux image: /boot/vmlinuz-3.10.0-1127.8.2.el7.x86_64
@@ -94,9 +94,10 @@ done
 *** Created microcode section ***
 *** Creating image file done ***
 *** Creating initramfs image file '/boot/ls' done ***
+```
 
-	3.4. Произвели замену на rd.lvm.lv=vg_root/lv_root в файле grub.cfg. Перезагрузили систему;
-
+* 3.4. Произвели замену на rd.lvm.lv=vg_root/lv_root в файле grub.cfg. Перезагрузили систему;
+```
 Вывод lsblk:
 NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                       8:0    0   40G  0 disk 
@@ -110,9 +111,9 @@ sdb                       8:16   0   10G  0 disk
 sdc                       8:32   0    2G  0 disk 
 sdd                       8:48   0    1G  0 disk 
 sde                       8:64   0    1G  0 disk 
-
-	3.5. Вывод lsblk, после перезагрузки;
-
+```
+* 3.5. Вывод lsblk, после перезагрузки;
+```
 [vagrant@lvm ~]$ lsblk
 NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                       8:0    0   40G  0 disk 
@@ -126,19 +127,18 @@ sdb                       8:16   0   10G  0 disk
 sdc                       8:32   0    2G  0 disk 
 sdd                       8:48   0    1G  0 disk 
 sde                       8:64   0    1G  0 disk 
-
-	3.6. Далее для уменьшения / тома, необходимо удалить LogVol00, что изменить размер на 8G. Проделываем тоже самое что 3.1, 3.2, 3.3;
-
+```
+* 3.6. Далее для уменьшения / тома, необходимо удалить LogVol00, что изменить размер на 8G. Проделываем тоже самое что 3.1, 3.2, 3.3;
+```
 lvremove /dev/VolGroup00/LogVol00
-
 lvcreate -n VolGroup00/LogVol00 -L 8G /dev/VolGroup00
 
 mkfs.xfs /dev/VolGroup00/LogVol00
 mount /dev/VolGroup00/LogVol00 /mnt
 xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt
 и так далее по инструкции;
-
-	3.7. Перезагрузка;
+```
+* 3.7. Перезагрузка;
 
 4. Работа с var;
 
