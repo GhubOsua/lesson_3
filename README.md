@@ -9,8 +9,8 @@
 1. Загрузка вирт. машины и обновление  ОС. virtual up , yum update -y;
 2. Смотрим какие устройства у нас;
 
-[vagrant@lvm /]$ lsblk
-NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+* [vagrant@lvm /]$ lsblk
+* NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 
 sda                       8:0    0   40G  0 disk
 
