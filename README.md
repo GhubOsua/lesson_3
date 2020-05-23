@@ -101,6 +101,7 @@ done
 ```
 
 * 3.4. Произвели замену на rd.lvm.lv=vg_root/lv_root в файле grub.cfg. Перезагрузили систему;
+
 Вывод lsblk:
 
 ```
@@ -149,7 +150,7 @@ xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt
 
 4. Работа с var;
 
-* 4.1. Создание для нового раздела var -  pv, vgvar, lvvar:
+* 4.1. Создание для нового раздела var -  pv, vgvar, lvvar;
 
 ```
 pvcreate /dev/sd{c,d}
@@ -163,7 +164,8 @@ lvcreate -L 950M -m1 -n lv_var vg_var
 Rounding up size to full physical extent 952.00 MiB
 Logical volume "lv_var" created.
 ```
-* 4.2. Создается ФС на lv_var, монтируется ФС в папку mnt. Копируются файлы из /var в mnt/var (рукурсивно и сохр. прав). После размонитируется /mnt, монтируется уже в lv_var в /var. Правим fstab. Перезагружаемся и удаляем pv где хранилось vg_root/lv_root, т.е. /dev/sdb. Правим fstab. Перезагружаемся и удаляем pv в котором  vg_root/lv_root, т.е. /dev/sdb.
+* 4.2. Создается ФС на lv_var, монтируется ФС в папку mnt. Копируются файлы из /var в mnt/var (рукурсивно и сохр. прав). После размонитируется /mnt, монтируется уже в lv_var в /var. Правим fstab. Перезагружаемся и удаляем pv где хранилось vg_root/lv_root, т.е. /dev/sdb. Правим fstab. Перезагружаемся и удаляем pv в котором  vg_root/lv_root, т.е. /dev/sdb;
+
 Вывод lsblk:
 
 ```
@@ -218,7 +220,7 @@ sde                          8:64   0    1G
 ```
 
 * 5.2. Создем snapshot для /home. Удаляем файлы из фс и восстанавливаем фс до удаления файлов с помощью фс;
-Вывод lvs со снапшотом:
+Вывод lvs со снапшотом;
 
 ```
 [root@lvm home]# lvs
