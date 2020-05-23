@@ -14,7 +14,6 @@
 >NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 
 >sda                       8:0    0   40G  0 disk 
-
 >├─sda1                    8:1    0    1M  0 part 
 
 ├─sda2                    8:2    0    1G  0 part /boot
