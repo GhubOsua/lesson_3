@@ -28,7 +28,8 @@ sde                       8:64   0    1G  0 disk
   
 Вывод команд: pvs, vgs, lvs:
 
-```PV         VG         Fmt  Attr PSize   PFree
+```
+PV         VG         Fmt  Attr PSize   PFree
 /dev/sda3  VolGroup00 lvm2 a--  <38.97g     0 
 /dev/sdb              lvm2 ---   10.00g 10.00g
 
@@ -45,6 +46,7 @@ LogVol01 VolGroup00 -wi-ao----   1.50g
 * 3.2. Создание фс, монтирование и перенос данных;
 
 ФС:
+```
 meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
 
          =                       sectsz=512   attr=2, projid32bit=1
@@ -62,9 +64,10 @@ log      =internal log           bsize=4096   blocks=2560, version=2
          =                       sectsz=512   sunit=0 blks, lazy-count=1
 	 
 realtime =none                   extsz=4096   blocks=0, rtextents=0
-
+```
 
 Перенос данных:
+```
 sudo xfsdump -J - /dev/VolGroup00/LogVol00 | sudo xfsrestore -J - /mnt
 fsrestore: restore complete: 69 seconds elapsed
 xfsrestore: Restore Status: SUCCESS
@@ -76,9 +79,10 @@ total 12
     8214 lrwxrwxrwx.  1 root root    7 May 20 08:56 bin -> usr/bin
     7782 drwxr-xr-x.  2 root root    6 May 12  2018 boot
 и так далее
+```
 
 3.3. Переконфигурация GRUB и обновление образа initrd. ;
-
+```
 Generating grub configuration file ...
 Found linux image: /boot/vmlinuz-3.10.0-1127.8.2.el7.x86_64
 Found initrd image: /boot/initramfs-3.10.0-1127.8.2.el7.x86_64.img
